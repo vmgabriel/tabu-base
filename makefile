@@ -1,40 +1,57 @@
 ENV=development
 
-run:
-	python manage.py
+
+all: clean install load
+dev: test lint
 
 
 test:
-	python -m pytest tests/ -v
+	coverage run --omit 'venv/*' -m pytest tests/ -v
+
+
+test-report:
+	coverage report -m
+	coverage html
+
+
+lint:
+	flake8 --exclude=venv
+
+
+run:
+	python3 manage.py
+
+
+load:
+	bash -c "source venv/bin/activate"
 
 
 clean:
+	rm -rf venv
 	rm -Rf .pytest_cache
 	rm -Rf __pycache__
 	rm -Rf */*/__pycache__
+	find tests -type f -name "*-test.json" -delete
+	find . -type f -name "*.pyc" -delete
 
-build-dev:
+
+install-dev:
 	python -m virtualenv venv
-	@echo "Load - $ source /venv/bin/activate"
-	@echo "Next: Load dependencies"
-	@echo "Load - $ make dependencies"
+	chmod +x venv/bin/activate
+	make load && ./venv/bin/pip install -r requirements/development.txt
 
 
-dependencies-dev:
-	pip install -r requirements/development.txt
-
-
-dependencies-prod:
+install-prod:
 	pip install -r requirements/production.txt
 
 
-dependencies:
+install:
 ifeq ($(ENV), development)
-	make dependencies-dev
+	make install-dev
 endif
 ifeq ($(ENV), production)
-	make dependencies-prod
+	make install-prod
 endif
 ifeq ($(ENV), undefined)
-	make dependencies-prod
+	make install-dev
 endif
