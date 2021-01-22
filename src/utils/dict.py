@@ -9,6 +9,11 @@ from typing import List
 from src.utils.composer import composer
 
 
+def to_items(dict_data: dict) -> List[tuple]:
+    """To item"""
+    return dict_data.items()
+
+
 def all_data_to_int(data: List[dict]) -> List[dict]:
     """
     Convert a List of dicts with data str to List of dicts with data int
@@ -24,10 +29,6 @@ def all_data_to_int(data: List[dict]) -> List[dict]:
             return []
         head, *tail = tuple_data
         return [value_to_int(*head)] + convert_all_to_int(tail)
-
-    def to_items(dict_data: dict) -> List[tuple]:
-        """To item"""
-        return dict_data.items()
 
     return list(map(
         composer(

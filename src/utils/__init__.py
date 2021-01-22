@@ -6,9 +6,11 @@ Module of Utilities for control
 from src.utils import (
     csv,
     dict as dict_module,
-    composer
+    composer,
+    math
 )
 
 csv_util = csv
 dict_util = dict_module
 composer = composer.composer
+math_util = math
