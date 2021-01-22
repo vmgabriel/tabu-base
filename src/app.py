@@ -3,7 +3,9 @@ Module for app - load
 """
 
 # Libraries
-import sys
+
+# Utils
+from src.utils import csv
 
 # Exceptions
 from src.exceptions import input_exception
@@ -21,12 +23,29 @@ def input_assignation():
     return tabu_input
 
 
+def tabu_without_aspirations():
+    """
+    Tabu module without aspirations
+    """
+    file_path = 'in/base0.csv'
+    data = csv.read_file(file_path)
+
+
+def tabu_with_aspirations():
+    """
+    Tabu module with aspirations
+    """
+    print('[In Develop] - not completed')
+
+
 def run():
     """Load process for app"""
     try:
-        if input_assignation() == 't':
-            print('T')
-        else:
-            print('F')
+        load_algorith = (
+            tabu_with_aspirations
+            if input_assignation() == 't' else
+            tabu_without_aspirations
+        )
+        load_algorith()
     except input_exception.InvalidInput as _a:
         print(f'data - {_a}')

@@ -3,7 +3,6 @@ Test Handle
 """
 
 # Libraries
-# from unittest.mock import Mock
 
 
 # Modules
