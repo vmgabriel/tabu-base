@@ -5,7 +5,7 @@ run:
 
 
 test:
-	pytest -v tests/
+	python -m pytest tests/ -v
 
 
 clean:
