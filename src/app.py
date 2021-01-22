@@ -5,7 +5,7 @@ Module for app - load
 # Libraries
 
 # Utils
-from src.utils import csv
+from src.utils import csv, composer, dict_module
 
 # Exceptions
 from src.exceptions import input_exception
@@ -28,7 +28,11 @@ def tabu_without_aspirations():
     Tabu module without aspirations
     """
     file_path = 'in/base0.csv'
-    data = csv.read_file(file_path)
+    init_data = composer(
+        dict_module.all_data_to_int,
+        csv.read_file
+    )(file_path)
+    # order_function = composer()
 
 
 def tabu_with_aspirations():
