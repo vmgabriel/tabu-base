@@ -23,3 +23,12 @@ def test_math_matrix_distance():
     data = [{'a': 14, 'b': 22}, {'a': 17, 'b': 3}]
     expect = [[0.0, 19.235384061671343], [19.235384061671343, 0.0]]
     assert math_util.matrix_distance(data, 'a', 'b') == expect
+
+
+def test_math_negative_matrix():
+    """
+    Verify the negative convertion of matrix
+    """
+    data = [1, 2, 3, 4]
+    expect = [-1, -2, -3, -4]
+    assert math_util.list_negative(data) == expect

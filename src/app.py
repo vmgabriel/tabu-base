@@ -5,7 +5,13 @@ Module for app - load
 # Libraries
 
 # Utils
-from src.utils import csv, composer, dict_module
+from src.utils import (
+    csv,
+    composer,
+    dict_module,
+    greedy_util,
+    math_util,
+)
 
 # Exceptions
 from src.exceptions import input_exception
@@ -32,7 +38,11 @@ def tabu_without_aspirations():
         dict_module.all_data_to_int,
         csv.read_file
     )(file_path)
-    # order_function = composer()
+    print('Data - ', init_data)
+    distances = math_util.matrix_distance(init_data, 'cx', 'cy')
+    print('Distances - ', distances)
+    response = greedy_util.worst_solution(distances)
+    print('First Solution - ', response)
 
 
 def tabu_with_aspirations():

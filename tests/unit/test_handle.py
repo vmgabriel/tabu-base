@@ -3,7 +3,7 @@ Test Handle
 """
 
 # Libraries
-
+import pytest
 
 # Modules
 from src.app import input_assignation
@@ -18,6 +18,7 @@ def test_pytest():
     assert res == 3
 
 
+@pytest.fixture
 def test_input_assignation(mocker):
     """Test Input Assignation"""
     mocks_control = [

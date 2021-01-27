@@ -6,7 +6,12 @@ dev: test lint
 
 
 test:
+	python -m pytest tests/ -v
+
+
+coverage:
 	coverage run --omit 'venv/*' -m pytest tests/ -v
+	make test-report
 
 
 test-report:

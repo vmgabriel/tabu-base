@@ -33,12 +33,32 @@ def matrix_distance(
         axis_name_y: str
 ) -> List[List[float]]:
     """
-    Generate a Matrix of distances
+    Generate a Matrix of distances based in euclidean vector distances
+    data: List[dict] - list of data to get matrix_distance
+    axis_name_x: str - axis based into data 'x'
+    axis_name_y: str - axis based into data 'y'
+    return: List[List[float]] -
+    based in length of data List [len(data), len(data)] dimension
+
+    Get data of distance vector based into data get
     """
     tam = len(data)
 
     def filter_axis(axis_1: str, axis_2: str) -> Callable:
-        """Filter Callable function for get data base for axis"""
+        """
+        Filter Callable function for get data base for axis
+        if axis_1 is 'x' as name of x
+        if axis_2 is 'y' as name of y
+
+        This return a function that
+        verify the first data of tuple that show in axis only name
+        ex:
+        filter_axis(
+        'x', 'y'
+        )([('x': 1, 'y': 2, 'z': 3),('x': 4, 'y': 5, 'z': 6)])
+        -> this return
+        [('x': 1, 'y': 2),('x': 4, 'y': 5)]
+        """
         return lambda x: list(
             filter(
                 lambda y: y[0] in [axis_1, axis_2],
@@ -46,8 +66,12 @@ def matrix_distance(
             )
         )
 
-    def value_data(defined: List[dict]):
-        """Get only the value"""
+    def value_data(defined: List[tuple]) -> List[int]:
+        """
+        Get only the value
+        ex:
+        [('a', 1),('b', 2)] -> [1,2]
+        """
         return list(map(
             lambda x: x[1],
             defined
@@ -72,3 +96,15 @@ def matrix_distance(
     ]
 
     return distance
+
+
+def list_negative(_l: List[int]) -> List[int]:
+    """
+    Convert all data of the matrix to negative
+    ex:
+    [1,2,3,4] -> [-1,-2,-3,-4]
+    """
+    return list(map(
+        lambda x: -x,
+        _l
+    ))
