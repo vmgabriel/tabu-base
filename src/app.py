@@ -43,6 +43,8 @@ def tabu_without_aspirations():
     print('Distances - ', distances)
     response = greedy_util.worst_solution(distances)
     print('First Solution - ', response)
+    iterable_control = greedy_util.generate_local_search(distances, response)
+    print('Solution - ', iterable_control)
 
 
 def tabu_with_aspirations():

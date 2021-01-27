@@ -108,3 +108,20 @@ def list_negative(_l: List[int]) -> List[int]:
         lambda x: -x,
         _l
     ))
+
+
+def invert_positions(
+        solution: List[int],
+        origin: int,
+        destiny: int
+) -> List[int]:
+    """
+    Definition for invert position
+    ex:
+    solution: [1,2,3]
+    origin: 2
+    destiny: 3
+    return: [1,3,2]
+    """
+    solution[destiny], solution[origin] = solution[origin], solution[destiny]
+    return solution

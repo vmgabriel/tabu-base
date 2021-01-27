@@ -32,3 +32,12 @@ def test_math_negative_matrix():
     data = [1, 2, 3, 4]
     expect = [-1, -2, -3, -4]
     assert math_util.list_negative(data) == expect
+
+
+def test_change_position_list():
+    """
+    Verify the change of position in list
+    """
+    data = [1, 2, 3]
+    expect = [1, 3, 2]
+    assert math_util.invert_positions(data, 1, 2) == expect
