@@ -4,6 +4,7 @@ Module of Control math
 
 # Libraries
 import math
+from functools import reduce
 from typing import List, Callable
 
 
@@ -125,3 +126,30 @@ def invert_positions(
     """
     solution[destiny], solution[origin] = solution[origin], solution[destiny]
     return solution
+
+
+def evaluate_fo(
+        mat_distance: List[List[float]],
+        solution: List[int]
+) -> float:
+    """
+    Minizing evaluate function objective
+
+    ex:
+    matrix_distance = [
+      [0,1,2,3,4],
+      [0,2,3,4,5],
+      [0,3,5,6,7],
+      [7,8,9,0,1],
+      [4,5,6,7,8]
+    ]
+    solution: [1,2,3,4,0]
+
+    resolved:
+    15
+    """
+    return reduce(
+        lambda acc, x: acc + mat_distance[x[0]][x[1]],
+        enumerate(solution),
+        0
+    )

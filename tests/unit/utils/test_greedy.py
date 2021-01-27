@@ -32,20 +32,6 @@ def test_worst_solution():
     assert greedy_util.worst_solution(distance_matrix_test) == expect
 
 
-def test_fo():
-    """
-    test the fo
-    """
-    distance_matrix_test = [
-        [0, 100, 200],
-        [100, 0, 20],
-        [30, 10, 0],
-    ]
-    solution = [0, 2, 1]
-    expect = 30
-    assert greedy_util.evaluate_fo(distance_matrix_test, solution) == expect
-
-
 def test_best_change_not_tabu():
     """
     Validate configuration based into tabu change

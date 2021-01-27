@@ -7,7 +7,11 @@ from typing import List
 from functools import reduce
 
 # Modules
-from src.utils.math import list_negative, invert_positions
+from src.utils.math import (
+    list_negative,
+    invert_positions,
+    evaluate_fo
+)
 
 
 # Constants
@@ -53,33 +57,6 @@ def neghbord_most_near(
         lambda x: city_most_near(x) if x != start_city else start_city,
         range(len(distance_matrix))
     ))
-
-
-def evaluate_fo(
-        matrix_distance: List[List[float]],
-        solution: List[int]
-) -> float:
-    """
-    Minizing evaluate function objective
-
-    ex:
-    matrix_distance = [
-      [0,1,2,3,4],
-      [0,2,3,4,5],
-      [0,3,5,6,7],
-      [7,8,9,0,1],
-      [4,5,6,7,8]
-    ]
-    solution: [1,2,3,4,0]
-
-    resolved:
-    15
-    """
-    return reduce(
-        lambda acc, x: acc + matrix_distance[x[0]][x[1]],
-        enumerate(solution),
-        0
-    )
 
 
 def best_change_not_tabu(

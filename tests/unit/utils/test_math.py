@@ -41,3 +41,17 @@ def test_change_position_list():
     data = [1, 2, 3]
     expect = [1, 3, 2]
     assert math_util.invert_positions(data, 1, 2) == expect
+
+
+def test_fo():
+    """
+    test the fo
+    """
+    distance_matrix_test = [
+        [0, 100, 200],
+        [100, 0, 20],
+        [30, 10, 0],
+    ]
+    solution = [0, 2, 1]
+    expect = 30
+    assert math_util.evaluate_fo(distance_matrix_test, solution) == expect
