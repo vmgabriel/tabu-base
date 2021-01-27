@@ -134,4 +134,13 @@ def generate_local_search(
                 destiny=best_change[1][1]
             )
         counter += 1
-    return (counter, best_change[0], solution)
+    return (
+        counter,
+        (
+            prev_change[0]
+            if prev_change[0] < best_change[0] and
+            prev_change[0] != 0
+            else best_change[0]
+        ),
+        solution
+    )
