@@ -11,6 +11,8 @@ from src.utils import (
     dict_module,
     greedy_util,
     math_util,
+    tabu_util,
+    tabu_oop_util
 )
 
 # Exceptions
@@ -45,6 +47,15 @@ def tabu_without_aspirations():
     print('First Solution - ', response)
     iterable_control = greedy_util.generate_local_search(distances, response)
     print('Solution - ', iterable_control)
+    print('tabu solutions - ')
+    ts = tabu_oop_util.TabuSearch(
+        distances=distances,
+        iter_num=700,
+        tabu_duration=4,
+        first_solution=iterable_control[2]
+    )
+    for ite in range(4, 24):
+        print(ite, ts.solve(tabu_duration=ite))
 
 
 def tabu_with_aspirations():

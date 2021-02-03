@@ -9,7 +9,8 @@ from src.utils import (
     composer,
     math,
     greedy,
-    tabu
+    tabu,
+    tabu_oo
 )
 
 csv_util = csv
@@ -18,3 +19,4 @@ composer = composer.composer
 math_util = math
 greedy_util = greedy
 tabu_util = tabu
+tabu_oop_util = tabu_oo

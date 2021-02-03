@@ -12,7 +12,7 @@ load_dotenv(verbose=True)
 
 
 configuration = {
-    'tabu_duration': os.getenv('TABU_DURATION'),
-    'iterations': os.getenv('TABU_ITERATIONS'),
+    'tabu_duration': int(os.getenv('TABU_DURATION', '10')),
+    'iterations': int(os.getenv('TABU_ITERATIONS', '700')),
     'distance_algorith': os.getenv('ALGORITH_DISTANCE'),
 }
